@@ -16,8 +16,7 @@ void setup()
 void loop()
 {
   
-  rover->Sweepturn(RIGHT_TURN, 15ls
-  );
+  rover->Sweepturn(RIGHT_TURN, 15);
   /*rover->stop(1000);
   
   Serial.println("forward");
