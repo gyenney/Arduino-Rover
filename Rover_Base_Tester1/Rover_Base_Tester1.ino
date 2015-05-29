@@ -15,7 +15,10 @@ void setup()
 
 void loop()
 {
-  rover->stop(1000);
+  
+  rover->Sweepturn(RIGHT_TURN, 15ls
+  );
+  /*rover->stop(1000);
   
   Serial.println("forward");
   rover->go(20,1000);
@@ -32,4 +35,6 @@ void loop()
   Serial.println("Turn right");
   rover->turn(RIGHT_TURN,10,1000);
   rover->stop(1000);
+*/
+
 }

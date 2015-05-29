@@ -71,6 +71,22 @@ void Rover::turn(int direction, int turnSpeed)
     }
 }
 
+void Rover::Sweepturn(int direction, int turnSpeed)
+{
+    if(RIGHT_TURN == direction)
+    {
+   	 _servoLeft.write(_servoLeftStop - turnSpeed/2);
+   	 _servoRight.write(_servoRightStop + turnSpeed);
+    }
+    else
+    {
+   	 _servoLeft.write(_servoLeftStop - turnSpeed);
+   	 _servoRight.write(_servoRightStop - turnSpeed);
+    }
+}
+
+
+
 void Rover::turn(int direction, int speed, int time)
 {
 	turn(direction,speed);
