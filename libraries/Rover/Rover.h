@@ -33,6 +33,8 @@ class Rover
 
  void turn(int direction,int speed, int time);
 
+ void Sweepturn(int direction, int speed);
+
  void stop();
 
  void stop(int time);
