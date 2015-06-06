@@ -5,7 +5,7 @@
 #include <Rover.h>
 
 RangeRover* rover;
-int dist;
+int dist_cm;
 
 void setup()
 {
@@ -35,19 +35,10 @@ void setup()
 
 void loop()
 {
-    Serial.println ("Forward");
-    rover->go(20, 1000);
-    rover->stop(1000);
-    
-    dist = rover->range();
+    dist_cm = rover->range();  // get the range in cm.
     Serial.print("Range is: ");
-    Serial.println(dist);
+    Serial.println(dist_cm);
     
-    Serial.println ("Backward");
-    rover->go(-20, 1000);
-    rover->stop(1000);
+    rover->stop(1000);   // Wait 1 second before next range reading.
     
-    dist = rover->range();
-    Serial.print("Range is: ");
-    Serial.println(dist);
 }

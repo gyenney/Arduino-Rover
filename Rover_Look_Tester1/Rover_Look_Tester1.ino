@@ -11,7 +11,6 @@
 
 LookRover* rover;
 
-int dist;
 int dist_forward;
 int dist_right;
 int dist_left;
@@ -33,31 +32,26 @@ void setup()
     // Tune the stop values, so the servos fully stop.  
 
     // do debugOn() to get debug messages in SerialMonitor
-    rover->debugOff();    
+    rover->debugOff();   
+    rover->stop();
+    rover->look(LOOK_FORWARD);
 }
 
 
 
 void loop()
 {
-    rover->stop(); 
-    rover->look(LOOK_FORWARD);
-    rover->stop(1000); 
- 
     rover->look(LOOK_RIGHT);
     rover->stop(1000); 
     dist_right = rover->range();
-    rover->stop(1000);
   
     rover->look(LOOK_FORWARD);
     rover->stop(1000); 
     dist_forward = rover->range();
-    rover->stop(1000);
 
     rover->look(LOOK_LEFT);
     rover->stop(1000); 
     dist_left = rover->range();
-    rover->stop(1000);
     
     rover->look(LOOK_FORWARD);
 
@@ -66,7 +60,6 @@ void loop()
     Serial.print("forward distance   : ");
     Serial.println(dist_forward);
     Serial.print("right distance   : ");
-    Serial.println(dist_right);
-  
+    Serial.println(dist_right);  
 }
 
