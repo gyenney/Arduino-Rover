@@ -7,23 +7,27 @@
 #include <NewPing.h>
 #include <RangeRover.h>
 
-class LookRover:public RangerRover
+class LookRover : public RangeRover
 {
- protected:
-           Servo	_faceServo;
-public:
-	LookRover();
-	void init(	int servoLeftPin,
-			int servoLeftStop,
-			int servoRightPin,
-			int servoRightStop,
-			int triggerPin,
-			int echoPin,
-			int maxDistance,
-'			int faceServoPin,
-			);
+	protected:
+
+		Servo	_faceServo;
+
+
+	public:
+
+		LookRover();
+
+		void init(	int servoLeftPin,
+				int servoLeftStop,
+				int servoRightPin,
+				int servoRightStop,
+				int triggerPin,
+				int echoPin,
+				int maxDistance,
+				int faceServoPin	);
 			
-			void look(int direction);
+		void look(int direction);
 };
 
 #endif

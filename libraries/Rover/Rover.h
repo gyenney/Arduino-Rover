@@ -5,46 +5,48 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define LEFT_TURN 0
-#define RIGHT_TURN 1
+#define LEFT_TURN 	0
+#define RIGHT_TURN 	1
 
 class Rover
 {
- private:
+	private:
  
- int _servoLeftStop;
- int _servoRightStop;
- Servo _servoLeft;
- Servo _servoRight;
- int _debug;
+		int _servoLeftStop;
+		int _servoRightStop;
+		Servo _servoLeft;
+		Servo _servoRight;
+		int _debug;
 
- public:
- Rover();
- void init ( int servoLeftPin,
-             int servoLeftStop,
-             int servoRightPin,
-             int servoRightStop );
+ 	public:
+		Rover();
 
- void go(int speed);
+		void init ( int servoLeftPin,
+			    int servoLeftStop,
+			    int servoRightPin,
+			    int servoRightStop );
 
- void go(int speed,int time);
+		void go(int speed);
 
- void turn(int direction, int turnSpeed);
+		void go(int speed,int time);
 
- void turn(int direction,int speed, int time);
+		void turn(int direction, int turnSpeed);
 
- void Sweepturn(int direction, int speed);
+		void turn(int direction,int speed, int time);
 
- void stop();
+		void Sweepturn(int direction, int speed);
 
- void stop(int time);
+		void stop();
 
- void debugOn();
+		void stop(int time);
 
- void debugOff();
+		void debugOn();
 
- void debugPrintln(char * str);
+		void debugOff();
 
- void debugPrint(char * str);
+		void debugPrintln(char * str);
+
+		void debugPrint(char * str);
 };
+
 #endif

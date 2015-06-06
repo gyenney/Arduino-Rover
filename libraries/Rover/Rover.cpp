@@ -16,14 +16,11 @@ Rover::Rover()
 void Rover::init(	int servoLeftPin,
                  	int servoLeftStop,
                  	int servoRightPin,
-   	  	        int servoRightStop)
-
+   	  	        int servoRightStop )
 {
     
-    _servoLeftStop      =servoLeftStop;
-    
-
-    _servoRightStop    	=servoRightStop;
+    _servoLeftStop      = servoLeftStop;
+    _servoRightStop    	= servoRightStop;
 
 
     _servoLeft.attach(servoLeftPin);
@@ -39,8 +36,8 @@ void Rover::stop()
 
 void Rover::stop(int time)
 {
-	stop();
-	delay(time);
+    stop();
+    delay(time);
 }
 
 void Rover::go(int speed)
@@ -53,8 +50,8 @@ void Rover::go(int speed)
 
 void Rover::go(int speed,int time)
 {
-	go(speed);
-	delay(time);
+    go(speed);
+    delay(time);
 }
 
 void Rover::turn(int direction, int turnSpeed)
@@ -89,7 +86,7 @@ void Rover::Sweepturn(int direction, int turnSpeed)
 
 void Rover::turn(int direction, int speed, int time)
 {
-	turn(direction,speed);
+	turn(direction, speed);
 	delay(time);
 	stop();
 }

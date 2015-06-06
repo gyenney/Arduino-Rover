@@ -1,64 +1,44 @@
 #include "Arduino.h"
-
-#include<LookRover.h>
+#include <LookRover.h>
 
 
 LookRover::LookRover()
-
 {
-    debugPrinln("In Constructor LookRover::Look Rover");
+    debugPrintln("In Constructor LookRover::Look Rover");
 
 }
 
 void LookRover::init( int servoLeftPin,
-
                       int servoLeftStop,
- 
-                     int servoRightPin
-,
-                      int RightStop,
-
+                      int servoRightPin, 
+		      int servoRightStop,
                       int triggerPin,
-
                       int echoPin,
-
                       int maxDistance,
-
-                      int faceServoPin)
+                      int faceServoPin  )
 
 {
     
 	debugPrintln("in method LookRover::init()");
 
+    	_faceServo.attach(faceServoPin);
 
-    
-    _faceServo.attach(faceServoPin);
-
-    
    
         RangeRover::init(  servoLeftPin,
-
                            servoLeftStop,
-
                            servoRightPin,
-
                            servoRightStop,
-
-                           triggerPin,
-    
-                       echoPin,
-    
-                       maxDistance );
+			   triggerPin,
+			   echoPin,
+                           maxDistance );
 
 }
                 
 
-void LookRover::look (int direction
-
+void LookRover::look (int direction)
 {
- 
 
- _faceServo.write(direction);
+	_faceServo.write(direction);
 
 }
                       

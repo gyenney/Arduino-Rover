@@ -1,0 +1,10 @@
+Rover	KEYWORD1
+init	KEYWORD2
+go	KEYWORD2
+turn	KEYWORD2	
+Sweepturn	KEYWORD2
+stop	KEYWORD2
+debugOn	KEYWORD2
+debugOff	KEYWORD2
+debugPrint	KEYWORD2
+debugPrintln	KEYWORD2

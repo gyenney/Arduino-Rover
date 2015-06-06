@@ -3,36 +3,38 @@
   Created by: Greg Yenney
 */
 
-#include “Arduino.h”
+#include <Arduino.h>
 #include <RangeRover.h>
 
 RangeRover::RangeRover()
 {
-	debugPrintln(“In Constructor RangeRover::RangeRover”);
+	debugPrintln("In Constructor RangeRover::RangeRover");
 }
 
-void RangeRover::init ( intservoLeftPin,
-				   int servoLeftStop,
-				   int servoRightPin,
-				   int servoRightStop,
-				   int triggerPin,
-				   int echoPin,
-				   int maxDistance  )
+void RangeRover::init ( int servoLeftPin,
+		  	int servoLeftStop,
+		   	int servoRightPin,
+			int servoRightStop,
+			int triggerPin,
+			int echoPin,
+			int maxDistance  )
 {
-		debugPrintln(“In method RangeRover::init()”):
+	debugPrintln("In method RangeRover::init()");
 
-		_pingSensor = new NewPing( triggerPin, echoPin, maxDistance):
-		Rover::init(  servoLeftPin,
-			        servoLeftStop,
-			        servoRightPin,
-			        servoRightStop  );
+	_pingSensor = new NewPing( triggerPin, echoPin, maxDistance);
+
+	Rover::init( 	servoLeftPin, 
+			servoLeftStop, 
+			servoRightPin, 
+			servoRightStop  );
 }
 
-init RangeRover::range()
-{
-		debugPrintln(“In method RangeRover::range()”);
 
-		int dist_cm= _pingSensor->ping_cm();
+int RangeRover::range()
+{
+		debugPrintln("In method RangeRover::range()");
+
+		int dist_cm = _pingSensor->ping_cm();
 
 		return (dist_cm);
 }

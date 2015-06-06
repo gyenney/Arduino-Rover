@@ -1,6 +1,6 @@
 #include <Servo.h>
 #include <NewPing.h>
-#include<RangeRover.h>
+#include <RangeRover.h>
 #include <RangeRover.h>
 #include <Rover.h>
 
@@ -32,26 +32,25 @@ void setup()
 }
 
 
-vood loop()
+void loop()
 {
 		rover->stop(1000);
 
-		Serial.println (“Forward”);
+		Serial.println ("Forward");
 		rover->go(20, 1000);
 
 		rover->stop(1000);
 		dist = rover->range();
 
-		Serial.print(“Range is: “);
+		Serial.print("Range is: ");
 		Serial.println(dist);
 
-		Serial.println (“Backward”);
+		Serial.println ("Backward");
 		rover->go(-20, 1000);
 
 		rover->stop(1000);
 		dist = rover->range();
 
-		Serial.print(“Range is: “);
+		Serial.print("Range is: ");
 		Serial.println(dist);
 }
-
