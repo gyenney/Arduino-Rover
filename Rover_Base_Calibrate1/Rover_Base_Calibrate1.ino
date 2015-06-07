@@ -8,7 +8,7 @@ void setup()
     Serial.begin(9600);
   
     rover = new Rover();
-    rover->init(10,91,11,89);
+    rover->init(10,88,11,89);
     //  init parameters: 
     //    Left Servo Pin = 10, 
     //    Left Servo Stop value = 90

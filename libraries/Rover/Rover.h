@@ -7,6 +7,7 @@
 
 #define LEFT_TURN 	0
 #define RIGHT_TURN 	1
+#define NULL_TURN	-9999
 
 class Rover
 {

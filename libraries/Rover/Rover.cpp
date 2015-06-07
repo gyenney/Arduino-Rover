@@ -42,8 +42,8 @@ void Rover::stop(int time)
 
 void Rover::go(int speed)
 {
-    _servoLeft.write(_servoLeftStop - speed);
-    _servoRight.write(_servoRightStop + speed);
+    _servoLeft.write(_servoLeftStop + speed);
+    _servoRight.write(_servoRightStop - speed);
 }
 
 

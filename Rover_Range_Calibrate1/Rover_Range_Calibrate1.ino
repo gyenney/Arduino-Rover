@@ -13,7 +13,7 @@ void setup()
 
     rover = new RangeRover();
 
-    rover->init( 10, 91, 11, 89, 6, 5, 1000);
+    rover->init( 10, 88, 11, 89, 6, 5, 200);
 
     // Left servo pin = 10
     // Left servo stop value

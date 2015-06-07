@@ -6,8 +6,8 @@
 
 // Tune these values to get the look directions correct.
 #define	  LOOK_RIGHT     42
-#define	  LOOK_FORWARD   87
-#define	  LOOK_LEFT      138
+#define	  LOOK_FORWARD   95
+#define	  LOOK_LEFT      150
 
 LookRover* rover;
 
@@ -16,7 +16,7 @@ void setup()
     Serial.begin(9600);
   
     rover = new LookRover();
-    rover->init( 10, 90, 11, 89, 6, 5, 1000, 3);  
+    rover->init( 10, 88, 11, 89, 6, 5, 1000, 3);  
   
     //  init parameters: 
     //    Left Servo Pin = 10, 
