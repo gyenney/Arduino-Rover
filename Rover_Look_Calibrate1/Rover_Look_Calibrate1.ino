@@ -4,10 +4,25 @@
 #include <RangeRover.h>
 #include <Rover.h>
 
-// Tune these values to get the look directions correct.
-#define	  LOOK_RIGHT     42
-#define	  LOOK_FORWARD   95
-#define	  LOOK_LEFT      150
+//  This is a calibration program.  It causes the rover ping 
+//  sensor to look forward, then right, then left repeatedly.
+//  Use this program to tune the LOOK values so the sensor 
+//  points in the correct directions.
+//
+//  NOTE:  1.  Be sure to have your battery pack turned on when
+//             calibrating.  Otherwise you may get invalid results.
+//        
+//         2.  Be sure to set your servo stop values before 
+//             calibrating these LOOK values.  Otherwise you 
+//             may get invalid results.
+
+// Tune these values to get the LOOK directions correct.
+// You can also define new look directions by adding them here 
+// and using your new values later in the program.
+//
+#define	  LOOK_RIGHT     36
+#define	  LOOK_FORWARD   87
+#define	  LOOK_LEFT      140
 
 LookRover* rover;
 
@@ -16,7 +31,7 @@ void setup()
     Serial.begin(9600);
   
     rover = new LookRover();
-    rover->init( 10, 88, 11, 89, 6, 5, 1000, 3);  
+    rover->init( 10, 90, 11, 90, 6, 5, 1000, 3);  
   
     //  init parameters: 
     //    Left Servo Pin = 10, 

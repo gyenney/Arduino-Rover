@@ -1,6 +1,12 @@
 #include <Servo.h>
 #include <Rover.h>
 
+// This is a calibration program.  It moves the rover forward
+// for 1 second, stops for 1 second, then moves backwards for 
+// 1 second.  Tune the servo stop values (see the init function
+// below) so the rover stops completely without any buzzing.  
+// Use these stop values in other Rover programs.
+
 Rover* rover;
 
 void setup()
@@ -8,16 +14,16 @@ void setup()
     Serial.begin(9600);
   
     rover = new Rover();
-    rover->init(10,88,11,89);
-    //  init parameters: 
+    rover->init(10,93,11,95);
+    
+    //  init parameters are: 
     //    Left Servo Pin = 10, 
     //    Left Servo Stop value = 90
     //    Right Servo Pin = 11
-    //    Right Server Stop value = 90
-    // Tune the stop values, so the servos fully stop.  
-
- 
-  
+    //    Right Servo Stop value = 90
+    //    
+    // Tune the stop values, so the servos fully stop. 
+      
     // debugOn() and debugOff() turn debugging messages on/off in the SerialMonitor
     rover->debugOff();
     rover->stop();  

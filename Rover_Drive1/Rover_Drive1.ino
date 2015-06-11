@@ -4,10 +4,32 @@
 #include <RangeRover.h>
 #include <Rover.h>
 
-// Tune these values to get the look directions correct.
-#define	  LOOK_RIGHT     42
-#define	  LOOK_FORWARD   95
-#define	  LOOK_LEFT      150
+//  This program drives a rover around.  
+//  The intended algorithm is go until it comes within 20cm 
+//  of an obstacle, then looks right, forward, and 
+//  left to determine the most open path.  Then turn that 
+//  direction and continue on.  If it has no room, it will first 
+//  back up then turn right and move on.
+//  Refine and this code to handle more situations.  
+//  Add routines directly into the base libraries to make them 
+//  available and easy to use for all rover developers.
+//
+//  NOTE:  1.  Be sure to have your battery pack turned on when
+//             calibrating.  Otherwise you may get invalid results.
+//        
+//         2.  Be sure to set your servo stop values before 
+//             calibrating these LOOK values.  Otherwise you 
+//             may get invalid results.
+
+
+
+
+//  Tune these LOOK values to get the Sensor to look 
+//  in the directions indicated correctly.
+//
+#define	  LOOK_RIGHT     36 
+#define	  LOOK_FORWARD   87
+#define	  LOOK_LEFT      140
 
 LookRover* rover;
 
@@ -23,18 +45,21 @@ void setup()
     Serial.begin(9600);
   
     rover = new LookRover();
-    rover->init( 10, 88, 11, 89, 6, 5, 1000, 3);  
+    rover->init( 10, 93, 11, 95, 6, 5, 1000, 3);  
   
-    //  init parameters: 
+    //  init parameters are: 
     //    Left Servo Pin = 10, 
+    //    Left Servo Stop value = 90
     //    Right Servo Pin = 11
+    //    Right Servo Stop value = 90
     //    Trigger Pin = 6
     //    Echo Pin = 5
-    //    Max Distance
-    //    Face Servo Pin = 3                  
+    //    Max Distance (in cm)
+    //    Face Servo Pin = 3
+    //    
     // Tune the stop values, so the servos fully stop.  
 
-    // do debugOn() to get debug messages in SerialMonitor
+    // Use debugOn() to get debug messages in SerialMonitor
     rover->debugOff();   
     rover->stop();
     rover->look(LOOK_FORWARD);
@@ -44,6 +69,10 @@ void setup()
 
 void loop()
 {
+  
+    // This section causes the rover to look around and 
+    // measure the distances, right, forward and left.
+    
     rover->look(LOOK_RIGHT);
     rover->stop(1000); 
     dist_right = rover->range();
@@ -64,6 +93,10 @@ void loop()
     Serial.println(dist_forward);
     Serial.print("right distance   : ");
     Serial.println(dist_right);  
+
+
+    //  This section finds the most open direction 
+    //  then sets "most_open_path" to that value.
     
     most_open_path = 0;
     if (dist_left > most_open_path)
@@ -83,6 +116,9 @@ void loop()
     }
     
     
+    //  This section tells the rover what to do based 
+    //  on the most_open_direction that was found.
+    
     if (LEFT_TURN == turn_direction)
     {
           Serial.println("Turning left.");
@@ -99,6 +135,13 @@ void loop()
           rover->go(-10, 1000);
           rover->turn(RIGHT_TURN, 10, 1000);
     }
+
+    //  Now that the rover has handled the obstacle 
+    //  (with the above code), tell the rover to go 
+    //  forward until it detects a new obstacle.  
+    //  It will then stop and return to the beginning of 
+    //  this loop function where it will start by looking 
+    //  around and then doing above obstacle avoidance actions.
     
     while (rover->range() > 20)
     {
