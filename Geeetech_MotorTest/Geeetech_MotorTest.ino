@@ -239,7 +239,7 @@ void processTxt (String buffer, int buffsize)
 
     // Txt Format from Phone:  
     //
-    // +CMT: "+18057270090","","16/03/15,23:57:58-28"
+    // +CMT: "+1your_phone_number","","16/03/15,23:57:58-28"
     // This is a multiline txt program.  
     // Beeline is here.
     // And another.
