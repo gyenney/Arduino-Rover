@@ -54,7 +54,7 @@ void loop()
 {
  mySerial.print("AT+CMGF=1\r");    //Because we want to send the SMS in text mode
  delay(100);
- mySerial.println("AT + CMGS = \"8057270090\"");//send sms message, be careful need to add a country code before the cellphone number
+ mySerial.println("AT + CMGS = \"your_phone_number\"");//send sms message, be careful need to add a country code before the cellphone number
  delay(100);
  mySerial.println("Test message from GEEETECH SIM900!");//the content of the message
  delay(100);
@@ -81,7 +81,7 @@ void loop()
 ///this function is to dial a voice call
 void DialVoiceCall()
 {
- mySerial.println("ATD + 8057270090;");//dial the number
+ mySerial.println("ATD + your_phone_number;");//dial the number
  delay(100);
  mySerial.println();
 }
