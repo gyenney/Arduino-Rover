@@ -110,7 +110,7 @@ void SendMessage()
   Serial.println("SendMessage()");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"8057270090\"\r"); // Replace x with mobile number
+  mySerial.println("AT+CMGS=\"your_phone_number\"\r"); // Replace x with mobile number
   delay(500);
   mySerial.println("Hello, from Rover2.");// The SMS text you want to send
   delay(500);
