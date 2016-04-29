@@ -37,14 +37,12 @@ void loop()
           Serial.println("Send Message.");
           SendMessage();
           break;
-        case 'r':
-          Serial.println("Receive Message.");
-          ReceiveMessage();
+        default:
           break;
     }
   }
 
-  for (i = 0 ; i < 256 ; i++)
+  for (int i = 0 ; i < 256 ; i++)
   {
       inputBuffer[i] = 0;
   }
