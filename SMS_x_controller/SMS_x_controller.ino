@@ -3,6 +3,18 @@ SMS_x_controller:
 
   Purpose:  A Signal ligh controller.  Detects a car about to run a red light and signals 
             to an oncoming smart-car to stop.
+            
+  Summary:
+            If the East light-sensor turns off, there is an east-bound car.
+            If the East light is red, and there is an east-bound car, the car is about to run a red light
+            If North Light sensor turns off, there is a north-bound car.
+            If there is a north-bound car and there is an east-bound car that is about to run the red-light, 
+              the north-bound car needs to stop -- The signal light needs to send a STOP txt message.
+              
+  Next Steps:  
+            Could use timers or more sensors to determine when the cars have passed through the intersection 
+            and thus are out of danger.
+            
 
 MiddleSchoolOfEngineering
 Author: Greg Yenney
@@ -22,8 +34,12 @@ const int myEastGreenLight = 12;
 const int myEastRedLight = 13;
 
 const int lightThreshold = 100;   // the light level that determines on and off.
-int lightLevel = 0;               // It's always good to initialize your variables.
-int lightIsOn = false;              // It's always good to initialize your variables.
+int northlightLevel = 0;               // It's always good to initialize your variables.
+int northlightIsOn = false;              // It's always good to initialize your variables.
+
+int eastLightLevel = 0;               // It's always good to initialize your variables.
+int eastLightIsOn = false;              // It's always good to initialize your variables.
+
 
 char inputBuffer[256];
 
