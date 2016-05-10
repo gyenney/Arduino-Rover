@@ -9,9 +9,15 @@
 
 Rover* rover;
 
+const int goPin = 13;
+int goPinState = LOW;
+
+
 void setup()
 {
     Serial.begin(9600);
+  
+    pinMode(goPin, INPUT);
   
     rover = new Rover();
     rover->init(10,93,11,94);
@@ -30,11 +36,29 @@ void setup()
   
     Serial.println ("Adjust the Servo Left Stop and Servo Right Stop values until the servos completely stop when stop command is given.");
     Serial.println ("Use the stop values found, in future programs on this rover.");
+
+    
+
+
+
 }
 
 void loop()
 {
+    goPinState = digitalRead(goPin);
 
+    if (goPinState == HIGH)
+    {
+       Serial.println ("State is Go.");
+       rover->go(20);
+    } else
+    {
+       Serial.println ("State is Stop.");
+       rover->stop();
+    }
+    
+  
+/*
     Serial.println("Go forward for 1 second.");
     rover->go(20,1000);
  
@@ -46,5 +70,7 @@ void loop()
 
     Serial.println("Stop for 1 second.");
     rover->stop(1000);
-  
+
+*/
+
 }
