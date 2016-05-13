@@ -9,14 +9,15 @@ Author: Greg Yenney
 
 */
 
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h> 
 
 const int myRx = 7;  // Shield: Rx=7, Tx=8
 const int myTx = 8;  // Board:  Rx=4, Tx=2
-const int myStopPin = 10;
 
 
 char inputBuffer[256];
+int commandValue;
+
 
 SoftwareSerial mySerial(myRx, myTx);
 
@@ -24,10 +25,6 @@ void setup()
 {
   pinMode(myRx, INPUT_PULLUP);
   pinMode(myTx, OUTPUT);
-
-  pinMode(myStopPin, OUTPUT);
-
-  digitalWrite(myStopPin, LOW);
 
   mySerial.begin(19200);
   Serial.begin(19200);
@@ -42,7 +39,10 @@ void setup()
 
 void loop()
 {
-
+  // pause so we can see what's happening.
+  delay(1000);
+  
+  
   if (Serial.available() > 0)
   {
      switch(Serial.read())
@@ -56,8 +56,6 @@ void loop()
           break;
     }
   }
-
-
       
   if (mySerial.available()>0)
   {
@@ -75,13 +73,20 @@ void loop()
       //    The txt message itself
       // processTxt gets the message in order to determine action for car.
       // 
-      processTxt(inputBuffer, sizeof(inputBuffer));
+      commandValue = processTxt(inputBuffer, sizeof(inputBuffer));
   }   
 
   for (int j = 0 ; j < 256 ; j++)
   {
       inputBuffer[j] = 0;
   }
+  
+  Serial.print("Command is: ");
+  Serial.println(commandValue);
+  
+  // take appropriate action based on the command that was returned.
+ 
+  
 }
 
 void SendMessage(String message)
@@ -101,9 +106,11 @@ void SendMessage(String message)
 }
 
 //void processTxt (String buffer, int buffsize, char * messageBuffer, int msgsize)
-void processTxt (String buffer, int buffsize)
+int processTxt (String buffer, int buffsize)
 {
     Serial.println("In processTxt");
+ 
+    int command = -1;
  
     //Serial.println(buffer);
 
@@ -147,14 +154,18 @@ void processTxt (String buffer, int buffsize)
     Serial.println(message);
 
     String stopMessage = "STOP";
+    String goMessage = "GO";
 
-    if (buffer.indexOf(stopMessage) > 0 )
+    if (buffer.indexOf(goMessage) > 0)
+    {
+        Serial.println("Message is Go!");  
+        // send emergency stop signal here.
+        command = 1;
+    } else if (buffer.indexOf(stopMessage) > 0 )
     {
         Serial.println("Message is Stop!");  
         // send emergency stop signal here.
-        digitalWrite(myStopPin, HIGH);
-        delay(10000);
-        digitalWrite(myStopPin, LOW);
+        command = 2;
     }
     else
     {
@@ -162,6 +173,8 @@ void processTxt (String buffer, int buffsize)
     }
      
     Serial.println("returning from processTxt");
+    
+    return (command);
 }
 
 
