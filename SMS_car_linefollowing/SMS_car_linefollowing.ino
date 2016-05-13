@@ -5,7 +5,7 @@ const int Line1 = 7;     // Left Line Sensor
 const int Line2 = 8;     // Center Line Sensor
 const int Line3 = 10;    // Right Sensor 
 
-const int In1 = 3;      // In1
+const int In1 = 3;      // In1  
 const int In2 = 5;      // In2
 const int In3 = 6;      // In3
 const int In4 = 11;     // In4
@@ -23,7 +23,7 @@ void setup()
   pinMode(Line1, INPUT); 
   pinMode(Line2, INPUT); 
   pinMode(Line3, INPUT); 
-  Serial.begin(9600);
+  Serial.begin(19200);
 }
 
 void loop()
