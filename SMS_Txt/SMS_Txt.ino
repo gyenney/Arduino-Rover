@@ -11,7 +11,7 @@ Greg Yenney
 const int myRx = 7;  // Shield: Rx=7, Tx=8
 const int myTx = 8;  // Board:  Rx=4, Tx=2
 
-const String phone_number = "your_phone_number_here";
+const String phone_number = "xxxxxxxxxx";
 
 char inputBuffer[256];
 
@@ -42,6 +42,27 @@ void loop()
           Serial.println("Send Message.");
           SendMessage();
           break;
+
+        case 'n':
+          Serial.println("Get IMEI number.");
+          doATCmd("AT+CGSN");
+          break;
+          
+        case 'p':        
+          Serial.println("Get phone number.");
+          doATCmd("AT+CNUM");
+          break;
+
+        case 'i':
+          Serial.println("Get CIMI");
+          doATCmd("AT+CIMI");
+          break;
+
+        case 'k':
+          Serial.println("Get Clock.");
+          doATCmd("AT+CCLK?");
+          break;
+        
         default:
           break;
     }
@@ -79,4 +100,13 @@ void SendMessage()
    mySerial.println((char)26);// ASCII code of CTRL+Z
   delay(100);
 }
- 
+
+
+
+
+String doATCmd(String atCmd)
+{
+  Serial.println("Doing AT Command:  atCmd");
+  mySerial.println(atCmd);  
+}
+

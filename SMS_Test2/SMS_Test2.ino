@@ -159,7 +159,7 @@ void SendMessage()
   Serial.println("SendMessage()");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"8057270090\"\r"); // Replace x with mobile number
+  mySerial.println("AT+CMGS=\"##########\"\r"); // Replace x with mobile number
   delay(500);
   mySerial.println("Hi dylan.");// The SMS text you want to send
   delay(500);
@@ -172,7 +172,7 @@ void Stop()
   Serial.println("Stop()");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"8057270090\"\r"); // Replace x with mobile number
+  mySerial.println("AT+CMGS=\"##########\"\r"); // Replace x with mobile number
   delay(500);
   mySerial.println("Stop");// The SMS text you want to send
   delay(500);
@@ -186,7 +186,7 @@ void Go()
   Serial.println("Go()");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"8057270090\"\r"); // Replace x with mobile number
+  mySerial.println("AT+CMGS=\"xxxxxxxxxx\"\r"); // Replace x with mobile number
   delay(500);
   mySerial.println("Go");// The SMS text you want to send
   delay(500);
