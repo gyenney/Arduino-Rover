@@ -1,12 +1,17 @@
 /*
-STEM Center USA, Inc.
-Pi-Bot: Motor Test Program using Function Calls
+MiddleSchoolOfEngineering
+
+SMS_Txt -- SMS test program.
+
+Greg Yenney
 */
 
 #include <SoftwareSerial.h>
 
 const int myRx = 7;  // Shield: Rx=7, Tx=8
 const int myTx = 8;  // Board:  Rx=4, Tx=2
+
+const String phone_number = "your_phone_number_here";
 
 char inputBuffer[256];
 
@@ -19,7 +24,7 @@ void setup()
 
   mySerial.begin(19200);
   Serial.begin(19200);
- 
+
   delay(100);
   mySerial.println("AT+IPR=19200");
 
@@ -65,9 +70,11 @@ void SendMessage()
   Serial.println("SendMessage()");
   mySerial.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
   delay(1000);  // Delay of 1000 milli seconds or 1 second
-  mySerial.println("AT+CMGS=\"8057270090\"\r"); // Replace x with mobile number
+  mySerial.print("AT+CMGS=\"");
+  mySerial.print(phone_number);
+  mySerial.println("\"\r");
   delay(500);
-  mySerial.println("Hello, from Rover2.");// The SMS text you want to send
+  mySerial.println("Hello, from device.");// The SMS text you want to send
   delay(500);
    mySerial.println((char)26);// ASCII code of CTRL+Z
   delay(100);
